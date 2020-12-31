@@ -1,20 +1,21 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using mypocket.api.Mapping;
+using mypocket.api.Models;
 using System;
 using System.Collections.Generic;
 using System.Net;
 
 namespace mypocket.api.Controllers
 {
-    public abstract class ApiController<T> : Controller
+    public abstract class ApiController<T> : Controller where T : BaseObject
     {
         private const int DEFAULT_TIME_OUT = 3000;
 
-        private IDatabaseMapping DataBase { get; }
+        private IDatabaseMapping Mapping { get; }
 
-        public ApiController(IDatabaseMapping dataBase)
+        public ApiController(IDatabaseMapping mapping)
         {
-            this.DataBase = dataBase;
+            this.Mapping = mapping;
         }
 
         #region " APIS "
@@ -24,7 +25,7 @@ namespace mypocket.api.Controllers
         {
             try
             {
-                var result = DataBase.DeleteFromDataBase(string.Format("/{0}", id));
+                var result = Mapping.DeleteFromDataBase(id.ToString());
                 result.Wait(DEFAULT_TIME_OUT);
                 if (result.IsCompleted)
                 {
@@ -44,7 +45,7 @@ namespace mypocket.api.Controllers
         {
             try
             {
-                var result = DataBase.GetListFromDataBase<T>(string.Empty).Result;
+                var result = Mapping.GetListFromDataBase<T>(string.Empty).Result;
                 if (result != null)
                 {
                     var data = new List<T>();
@@ -69,8 +70,49 @@ namespace mypocket.api.Controllers
         {
             try
             {
-                var result = DataBase.GetDataFromDataBase<T>(id.ToString()).Result;
+                var result = Mapping.GetDataFromDataBase<T>(id.ToString()).Result;
                 return result;
+            }
+            catch (Exception ex)
+            {
+                return StatusCode((int)HttpStatusCode.InternalServerError, ex);
+            }
+        }
+
+        [HttpPost]
+        public virtual ActionResult Insert([FromBody] T model)
+        {
+            try
+            {
+                model.Id = Guid.NewGuid();
+                var result = Mapping.SaveIntoDataBase(model);
+                result.Wait(DEFAULT_TIME_OUT);
+                if (result.IsCompleted)
+                {
+                    return Json(model);
+                }
+
+                return StatusCode((int)HttpStatusCode.RequestTimeout);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode((int)HttpStatusCode.InternalServerError, ex);
+            }
+        }
+
+        [HttpPut("{id}")]
+        public virtual ActionResult Update(Guid id, [FromBody] T model)
+        {
+            try
+            {
+                var result = Mapping.SaveIntoDataBase(model);
+                result.Wait(DEFAULT_TIME_OUT);
+                if (result.IsCompleted)
+                {
+                    return Json(model);
+                }
+
+                return StatusCode((int)HttpStatusCode.RequestTimeout);
             }
             catch (Exception ex)
             {

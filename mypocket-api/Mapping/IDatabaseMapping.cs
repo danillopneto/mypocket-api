@@ -11,5 +11,7 @@ namespace mypocket.api.Mapping
         Task<T> GetDataFromDataBase<T>(string path);
 
         Task<IReadOnlyCollection<FirebaseObject<T>>> GetListFromDataBase<T>(string path);
+
+        Task SaveIntoDataBase<T>(T model);
     }
 }
