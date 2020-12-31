@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using mypocket.api.Mapping;
 using mypocket.api.Models;
 
 namespace mypocket.api.Controllers
@@ -7,6 +8,8 @@ namespace mypocket.api.Controllers
     [ApiController]
     public class ProductController : ApiController<Product>
     {
-        protected override string PathName { get { return "products"; } }
+        public ProductController(IProductMapping db) : base(db)
+        {
+        }
     }
 }

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using mypocket.api.Mapping;
 
 namespace mypocket.api
 {
@@ -19,6 +20,8 @@ namespace mypocket.api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+
+            services.AddScoped<IProductMapping, ProductMapping>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
