@@ -21,6 +21,8 @@ namespace mypocket.api.Controllers
         #region " APIS "
 
         [HttpDelete("{id}")]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
         public virtual ActionResult Delete(Guid id)
         {
             try
@@ -29,7 +31,7 @@ namespace mypocket.api.Controllers
                 result.Wait(DEFAULT_TIME_OUT);
                 if (result.IsCompleted)
                 {
-                    return StatusCode((int)HttpStatusCode.OK);
+                    return Ok();
                 }
 
                 return StatusCode((int)HttpStatusCode.RequestTimeout);
@@ -41,6 +43,8 @@ namespace mypocket.api.Controllers
         }
 
         [HttpGet]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
         public virtual ActionResult<IEnumerable<T>> Get()
         {
             try
@@ -54,7 +58,7 @@ namespace mypocket.api.Controllers
                         data.Add(item.Object);
                     }
 
-                    return data;
+                    return Ok(data);
                 }
 
                 return StatusCode((int)HttpStatusCode.BadRequest);
@@ -66,12 +70,20 @@ namespace mypocket.api.Controllers
         }
 
         [HttpGet("{id}")]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
         public virtual ActionResult<T> Get(Guid id)
         {
             try
             {
                 var result = Mapping.GetDataFromDataBase<T>(id.ToString()).Result;
-                return result;
+                if (result == null)
+                {
+                    return NotFound(new { message = "The item was not found." });
+                }
+
+                return Ok(result);
             }
             catch (Exception ex)
             {
@@ -80,6 +92,8 @@ namespace mypocket.api.Controllers
         }
 
         [HttpPost]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
         public virtual ActionResult Insert([FromBody] T model)
         {
             try
@@ -89,7 +103,7 @@ namespace mypocket.api.Controllers
                 result.Wait(DEFAULT_TIME_OUT);
                 if (result.IsCompleted)
                 {
-                    return Json(model);
+                    return Ok(model);
                 }
 
                 return StatusCode((int)HttpStatusCode.RequestTimeout);
@@ -101,6 +115,8 @@ namespace mypocket.api.Controllers
         }
 
         [HttpPut("{id}")]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
         public virtual ActionResult Update(Guid id, [FromBody] T model)
         {
             try
@@ -109,7 +125,7 @@ namespace mypocket.api.Controllers
                 result.Wait(DEFAULT_TIME_OUT);
                 if (result.IsCompleted)
                 {
-                    return Json(model);
+                    return Ok(model);
                 }
 
                 return StatusCode((int)HttpStatusCode.RequestTimeout);
