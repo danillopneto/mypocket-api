@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 
-namespace MyPocket.Interfaces.Mapping
+namespace MyPocket.Interfaces
 {
-    public interface IDatabaseMapping
+    public interface IBaseRepository
     {
         void DeleteFromDataBase(string path);
 

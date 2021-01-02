@@ -4,8 +4,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using MyPocket.Interfaces.Mapping;
-using MyPocket.Repository.Mapping;
+using MyPocket.Interfaces.Repository;
+using MyPocket.Repository.Product;
 using System;
 using System.IO;
 using System.Reflection;
@@ -26,7 +26,7 @@ namespace MyPocket.API
         {
             services.AddControllers();
 
-            services.AddScoped<IProductMapping, ProductMapping>();
+            services.AddScoped<IProductRepository, ProductRepository>();
 
             services.AddSwaggerGen(c =>
             {

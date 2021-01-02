@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MyPocket.Domain.Product;
-using MyPocket.Interfaces.Mapping;
+using MyPocket.Interfaces.Repository;
 using System;
 using System.Net;
 
@@ -10,7 +10,7 @@ namespace MyPocket.API.Controllers
     [ApiController]
     public class ProductController : ApiController<Product>
     {
-        public ProductController(IProductMapping db) : base(db)
+        public ProductController(IProductRepository db) : base(db)
         {
         }
 

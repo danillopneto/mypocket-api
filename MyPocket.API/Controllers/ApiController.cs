@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MyPocket.Domain;
-using MyPocket.Interfaces.Mapping;
+using MyPocket.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Net;
@@ -9,11 +9,11 @@ namespace MyPocket.API.Controllers
 {
     public abstract class ApiController<T> : Controller where T : BaseObject
     {
-        private IDatabaseMapping Mapping { get; }
+        private readonly IBaseRepository _mapping;
 
-        public ApiController(IDatabaseMapping mapping)
+        public ApiController(IBaseRepository mapping)
         {
-            this.Mapping = mapping;
+            _mapping = mapping;
         }
 
         #region " APIS "
@@ -34,7 +34,7 @@ namespace MyPocket.API.Controllers
         {
             try
             {
-                Mapping.DeleteFromDataBase(id.ToString());
+                _mapping.DeleteFromDataBase(id.ToString());
                 return Ok();
             }
             catch (TimeoutException)
@@ -62,7 +62,7 @@ namespace MyPocket.API.Controllers
         {
             try
             {
-                var result = Mapping.GetListFromDataBase<T>(string.Empty);
+                var result = _mapping.GetListFromDataBase<T>(string.Empty);
                 return Ok(result);
             }
             catch (TimeoutException)
@@ -92,7 +92,7 @@ namespace MyPocket.API.Controllers
         {
             try
             {
-                var result = Mapping.GetDataFromDataBase<T>(id.ToString());
+                var result = _mapping.GetDataFromDataBase<T>(id.ToString());
                 if (result == null)
                 {
                     return NotFound(new { message = "The item was not found." });
@@ -149,7 +149,7 @@ namespace MyPocket.API.Controllers
         {
             try
             {
-                var result = Mapping.SaveIntoDataBase(model);
+                var result = _mapping.SaveIntoDataBase(model);
                 return Ok(model);
             }
             catch (TimeoutException)
