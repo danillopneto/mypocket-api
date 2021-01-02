@@ -1,7 +1,7 @@
 ﻿using MyPocket.Domain.Product;
 using MyPocket.Interfaces.Mapping;
 
-namespace MyPocket.Services.Mapping
+namespace MyPocket.Repository.Mapping
 {
     public class ProductMapping : DatabaseMapping<Product>, IProductMapping
     {

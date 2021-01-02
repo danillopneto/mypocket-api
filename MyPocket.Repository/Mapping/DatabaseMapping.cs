@@ -6,7 +6,7 @@ using Newtonsoft.Json.Serialization;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace MyPocket.Services.Mapping
+namespace MyPocket.Repository.Mapping
 {
     public abstract class DatabaseMapping<TDto> : IDatabaseMapping where TDto : BaseObject
     {

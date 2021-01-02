@@ -15,12 +15,12 @@ namespace MyPocket.API.Controllers
         }
 
         /// <summary>
-        /// Get all products.
+        /// Get an specific products.
         /// </summary>
         /// <param name="id">Id of the product.</param>
         /// <returns>All products.</returns>
         /// <response code="200">Success by getting the products.</response>
-        /// <response code="500">Internal error by getting the list.</response>
+        /// <response code="500">Internal error by getting the product.</response>
         [HttpGet("{id}")]
         [ProducesResponseType(typeof(Product), (int)HttpStatusCode.OK)]
         public override ActionResult<Product> Get(Guid id)

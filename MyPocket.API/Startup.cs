@@ -5,7 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using MyPocket.Interfaces.Mapping;
-using MyPocket.Services.Mapping;
+using MyPocket.Repository.Mapping;
 using System;
 using System.IO;
 using System.Reflection;

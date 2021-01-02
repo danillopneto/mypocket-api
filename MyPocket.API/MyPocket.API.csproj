@@ -14,7 +14,7 @@
   <ItemGroup>
     <ProjectReference Include="..\MyPocket.Domain\MyPocket.Domain.csproj" />
     <ProjectReference Include="..\MyPocket.Interfaces\MyPocket.Interfaces.csproj" />
-    <ProjectReference Include="..\MyPocket.Services\MyPocket.Services.csproj" />
+    <ProjectReference Include="..\MyPocket.Repository\MyPocket.Repository.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

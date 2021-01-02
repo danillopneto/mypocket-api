@@ -20,6 +20,13 @@ namespace MyPocket.API.Controllers
 
         #region " APIS "
 
+        /// <summary>
+        /// Delete the item from database.
+        /// </summary>
+        /// <param name="id">Identifier of the item.</param>
+        /// <returns>Result of the deletion.</returns>
+        /// <response code="200">Success by getting the products.</response>
+        /// <response code="500">Internal error by getting the product.</response>
         [HttpDelete("{id}")]
         [ProducesResponseType((int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
@@ -42,6 +49,12 @@ namespace MyPocket.API.Controllers
             }
         }
 
+        /// <summary>
+        /// Get the list of all items.
+        /// </summary>
+        /// <returns>The list of the item.</returns>
+        /// <response code="200">Success by getting the products.</response>
+        /// <response code="500">Internal error by getting the product.</response>
         [HttpGet]
         [ProducesResponseType((int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
@@ -69,6 +82,13 @@ namespace MyPocket.API.Controllers
             }
         }
 
+        /// <summary>
+        /// Get an specific item.
+        /// </summary>
+        /// <param name="id">Identifier of the item.</param>
+        /// <returns>The item with the Identifier informed.</returns>
+        /// <response code="200">Success by getting the item.</response>
+        /// <response code="500">Internal error by getting the item.</response>
         [HttpGet("{id}")]
         [ProducesResponseType((int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
@@ -91,6 +111,13 @@ namespace MyPocket.API.Controllers
             }
         }
 
+        /// <summary>
+        /// Insert the item into database.
+        /// </summary>
+        /// <param name="model">Model to be saved.</param>
+        /// <returns>The item that was saved with its Id.</returns>
+        /// <response code="200">Success by inserting the item.</response>
+        /// <response code="500">Internal error by inserting the item.</response>
         [HttpPost]
         [ProducesResponseType((int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.InternalServerError)]
@@ -114,6 +141,14 @@ namespace MyPocket.API.Controllers
             }
         }
 
+        /// <summary>
+        /// Update a specific item.
+        /// </summary>
+        /// <param name="id">Identifier of the item.</param>
+        /// <param name="model">Model to be saved.</param>
+        /// <returns>The item that was saved.</returns>
+        /// <response code="200">Success by getting the items.</response>
+        /// <response code="500">Internal error by getting the items.</response>
         [HttpPut("{id}")]
         [ProducesResponseType((int)HttpStatusCode.OK)]
         [ProducesResponseType((int)HttpStatusCode.InternalServerError)]

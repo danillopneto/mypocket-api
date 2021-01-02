@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyPocket.Domain", "MyPocket
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyPocket.Interfaces", "MyPocket.Interfaces\MyPocket.Interfaces.csproj", "{FABFF719-50B1-4EB3-B90C-4182CA48F123}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyPocket.Services", "MyPocket.Services\MyPocket.Services.csproj", "{10498945-A7FF-4A79-9576-234192269820}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyPocket.Repository", "MyPocket.Repository\MyPocket.Repository.csproj", "{10498945-A7FF-4A79-9576-234192269820}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
