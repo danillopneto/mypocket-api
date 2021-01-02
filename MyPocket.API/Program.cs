@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
-namespace mypocket.api
+namespace MyPocket.API
 {
     public class Program
     {

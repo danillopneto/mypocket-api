@@ -1,4 +1,4 @@
-﻿namespace mypocket.api.Mapping
+﻿namespace MyPocket.API.Mapping
 {
     public interface IProductMapping : IDatabaseMapping
     {

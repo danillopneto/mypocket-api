@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using mypocket.api.Mapping;
-using mypocket.api.Models;
+using MyPocket.API.Mapping;
+using MyPocket.Domain;
 using System;
 using System.Collections.Generic;
 using System.Net;
 
-namespace mypocket.api.Controllers
+namespace MyPocket.API.Controllers
 {
     public abstract class ApiController<T> : Controller where T : BaseObject
     {

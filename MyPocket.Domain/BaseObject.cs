@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace mypocket.api.Models
+namespace MyPocket.Domain
 {
     public abstract class BaseObject
     {

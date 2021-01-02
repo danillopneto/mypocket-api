@@ -1,4 +1,4 @@
-﻿namespace mypocket.api.Models
+﻿namespace MyPocket.Domain.Product
 {
     public class Product : BaseObject
     {

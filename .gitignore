@@ -1,4 +1,6 @@
 
 .vs
-mypocket-api/bin
-mypocket-api/obj
+MyPocket.API/bin
+MyPocket.API/obj
+MyPocket.Domain/bin
+MyPocket.Domain/obj

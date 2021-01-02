@@ -1,6 +1,6 @@
-﻿using mypocket.api.Models;
+﻿using MyPocket.Domain.Product;
 
-namespace mypocket.api.Mapping
+namespace MyPocket.API.Mapping
 {
     public class ProductMapping : DatabaseMapping<Product>, IProductMapping
     {

@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using mypocket.api.Mapping;
-using mypocket.api.Models;
+using MyPocket.API.Mapping;
+using MyPocket.Domain.Product;
 using System;
 using System.Net;
 
-namespace mypocket.api.Controllers
+namespace MyPocket.API.Controllers
 {
     [Route("api/v1/[controller]")]
     [ApiController]
