@@ -13,6 +13,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MyPocket.Domain\MyPocket.Domain.csproj" />
+    <ProjectReference Include="..\MyPocket.Interfaces\MyPocket.Interfaces.csproj" />
+    <ProjectReference Include="..\MyPocket.Services\MyPocket.Services.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using MyPocket.API.Mapping;
 using MyPocket.Domain.Product;
+using MyPocket.Interfaces.Mapping;
 using System;
 using System.Net;
 

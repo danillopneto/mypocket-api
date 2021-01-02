@@ -5,7 +5,11 @@ VisualStudioVersion = 16.0.30611.23
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyPocket.API", "MyPocket.API\MyPocket.API.csproj", "{0C14020D-E2F5-4799-9101-2FC00E3D9776}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyPocket.Domain", "MyPocket.Domain\MyPocket.Domain.csproj", "{E0AC42D2-16F9-4171-A6B4-C55C10E5F620}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyPocket.Domain", "MyPocket.Domain\MyPocket.Domain.csproj", "{E0AC42D2-16F9-4171-A6B4-C55C10E5F620}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyPocket.Interfaces", "MyPocket.Interfaces\MyPocket.Interfaces.csproj", "{FABFF719-50B1-4EB3-B90C-4182CA48F123}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyPocket.Services", "MyPocket.Services\MyPocket.Services.csproj", "{10498945-A7FF-4A79-9576-234192269820}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{E0AC42D2-16F9-4171-A6B4-C55C10E5F620}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E0AC42D2-16F9-4171-A6B4-C55C10E5F620}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E0AC42D2-16F9-4171-A6B4-C55C10E5F620}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FABFF719-50B1-4EB3-B90C-4182CA48F123}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FABFF719-50B1-4EB3-B90C-4182CA48F123}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FABFF719-50B1-4EB3-B90C-4182CA48F123}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FABFF719-50B1-4EB3-B90C-4182CA48F123}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10498945-A7FF-4A79-9576-234192269820}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10498945-A7FF-4A79-9576-234192269820}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10498945-A7FF-4A79-9576-234192269820}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10498945-A7FF-4A79-9576-234192269820}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -4,3 +4,7 @@ MyPocket.API/bin
 MyPocket.API/obj
 MyPocket.Domain/bin
 MyPocket.Domain/obj
+MyPocket.Interfaces/bin
+MyPocket.Interfaces/obj
+MyPocket.Services/bin
+MyPocket.Services/obj

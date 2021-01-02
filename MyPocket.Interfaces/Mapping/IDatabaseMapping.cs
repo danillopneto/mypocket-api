@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace MyPocket.API.Mapping
+namespace MyPocket.Interfaces.Mapping
 {
     public interface IDatabaseMapping
     {

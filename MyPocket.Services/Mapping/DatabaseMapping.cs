@@ -1,11 +1,12 @@
 ﻿using Firebase.Database;
 using MyPocket.Domain;
+using MyPocket.Interfaces.Mapping;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace MyPocket.API.Mapping
+namespace MyPocket.Services.Mapping
 {
     public abstract class DatabaseMapping<TDto> : IDatabaseMapping where TDto : BaseObject
     {
