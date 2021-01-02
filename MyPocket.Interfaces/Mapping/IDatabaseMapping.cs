@@ -1,17 +1,15 @@
-﻿using Firebase.Database;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace MyPocket.Interfaces.Mapping
 {
     public interface IDatabaseMapping
     {
-        Task DeleteFromDataBase(string path);
+        void DeleteFromDataBase(string path);
 
-        Task<T> GetDataFromDataBase<T>(string path);
+        T GetDataFromDataBase<T>(string path);
 
-        Task<IReadOnlyCollection<FirebaseObject<T>>> GetListFromDataBase<T>(string path);
+        IList<T> GetListFromDataBase<T>(string path);
 
-        Task SaveIntoDataBase<T>(T model);
+        T SaveIntoDataBase<T>(T model);
     }
 }

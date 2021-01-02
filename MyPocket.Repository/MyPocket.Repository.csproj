@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FirebaseDatabase.net" Version="4.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\MyPocket.Domain\MyPocket.Domain.csproj" />
     <ProjectReference Include="..\MyPocket.Interfaces\MyPocket.Interfaces.csproj" />
   </ItemGroup>

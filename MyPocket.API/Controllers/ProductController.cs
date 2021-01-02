@@ -15,11 +15,12 @@ namespace MyPocket.API.Controllers
         }
 
         /// <summary>
-        /// Get an specific products.
+        /// Get an specific product.
         /// </summary>
         /// <param name="id">Id of the product.</param>
         /// <returns>All products.</returns>
         /// <response code="200">Success by getting the products.</response>
+        /// <response code="408">Timeout by gettint the items.</response>
         /// <response code="500">Internal error by getting the product.</response>
         [HttpGet("{id}")]
         [ProducesResponseType(typeof(Product), (int)HttpStatusCode.OK)]

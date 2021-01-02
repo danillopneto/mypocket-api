@@ -3,6 +3,7 @@ using MyPocket.Domain;
 using MyPocket.Interfaces.Mapping;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -14,6 +15,8 @@ namespace MyPocket.Repository.Mapping
 
         private const string AUTH = "aCmmLJ1LnlLeUtWEEgY8GQ15EVBvTrsq4YWjKhmV";
 
+        private const int DEFAULT_TIME_OUT = 3000;
+
         private const string URL_BASE = "https://my-pocket-fire.firebaseio.com";
 
         #endregion " CONSTANTS "
@@ -24,25 +27,66 @@ namespace MyPocket.Repository.Mapping
 
         #endregion " PROPERTIES "
 
-        public Task DeleteFromDataBase(string path)
+        public void DeleteFromDataBase(string path)
         {
-            return GetFirebaseClient().Child(GetFullPath(path)).DeleteAsync();
+            var result = GetFirebaseClient().Child(GetFullPath(path)).DeleteAsync();
+            result.Wait(DEFAULT_TIME_OUT);
+            if (!result.IsCompleted)
+            {
+                throw new TimeoutException();
+            }
         }
 
-        public Task<T> GetDataFromDataBase<T>(string path = "")
+        public T GetDataFromDataBase<T>(string path = "")
         {
-            return GetFirebaseClient().Child(GetFullPath(path)).OnceSingleAsync<T>();
+            var result = GetFirebaseClient().Child(GetFullPath(path)).OnceSingleAsync<T>();
+            result.Wait(DEFAULT_TIME_OUT);
+            if (!result.IsCompleted)
+            {
+                throw new TimeoutException();
+            }
+
+            return result.Result;
         }
 
-        public Task<IReadOnlyCollection<FirebaseObject<T>>> GetListFromDataBase<T>(string path = "")
+        public IList<T> GetListFromDataBase<T>(string path = "")
         {
-            return GetFirebaseClient().Child(GetFullPath(path)).OnceAsync<T>();
+            var result = GetFirebaseClient().Child(GetFullPath(path)).OnceAsync<T>();
+            result.Wait(DEFAULT_TIME_OUT);
+            if (result.IsCompleted)
+            {
+                if (result != null)
+                {
+                    var data = new List<T>();
+                    foreach (var item in result.Result)
+                    {
+                        data.Add(item.Object);
+                    }
+
+                    return data;
+                }
+            }
+            else
+            {
+                throw new TimeoutException();
+            }
+
+            return null;
         }
 
-        public Task SaveIntoDataBase<T>(T model)
+        public T SaveIntoDataBase<T>(T model)
         {
             var dto = model as TDto;
-            return GetFirebaseClient().Child(GetFullPath(dto.Id.ToString())).PutAsync(ConvertToJson(model));
+            if (!dto.Id.HasValue)
+            {
+                dto.Id = Guid.NewGuid();
+            }
+
+            var result = GetFirebaseClient().Child(GetFullPath(dto.Id.ToString())).PutAsync(ConvertToJson(model));
+            result.Wait(DEFAULT_TIME_OUT);
+            return result.IsCompleted
+                    ? model
+                    : throw new TimeoutException();
         }
 
         #region " PRIVATE METHODS "
